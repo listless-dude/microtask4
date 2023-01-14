@@ -58,19 +58,63 @@ The post request should send a JSON in the format below:
 
 .. note::
         {
-        "user#id" : 
-        {
         "name": "username",
         "password": "pass",
-        "id": #id
-        }
+        "email": "email"
         }
 
-To delete a user with id
+To delete a user with tokenid
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ==================== =========================================
-**Endpoint:**         ``https://hbnqwi.deta.dev/api/delete/:id``
-**Local Endpoint:**   ``localhost:{PORT}/api/delete/:id`` 
+**Endpoint:**         ``https://hbnqwi.deta.dev/api/auth/deleteUser``
 **Method:**           ``DELETE`` 
 **Body Parameters:**  ``None``
+**Headers:**          **key:** ``authToken``, **value:** ``tokenid``
 ==================== =========================================
+
+To login a user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==================== =========================================
+**Endpoint:**         ``https://hbnqwi.deta.dev/api/auth/login``
+**Method:**           ``POST`` 
+**Body Parameters:**  ``JSON`` { "email": "email", "password": "password" }
+==================== =========================================
+
+Visitor Count API
+-------------------
+
+The Visitor Count API uses a MongoDB database with following Schema:
+
+.. code-block:: javascript
+
+    const VisitorSchema = new Schema({
+        visitors: {
+            type: Number,
+            required: true,
+            default: 0
+        }
+    });
+
+To add count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==================== =======================================
+**Endpoint:**         ``https://mz5mm5.deta.dev/api/visitor/addCount``
+**Method:**           ``POST``
+**Body Parameters:**  ``None`` 
+==================== =======================================
+
+To get total count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==================== =======================================
+**Endpoint:**         ``https://mz5mm5.deta.dev/api/visitor/getCount``
+**Method:**           ``GET``
+**Body Parameters:**  ``None`` 
+==================== =======================================
+
+To reset count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+==================== =======================================
+**Endpoint:**         ``https://mz5mm5.deta.dev/api/visitor/resetCount``
+**Method:**           ``PUT``
+**Body Parameters:**  ``None`` 
+==================== =======================================
